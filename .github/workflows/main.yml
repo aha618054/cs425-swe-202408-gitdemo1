@@ -14,13 +14,18 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4  # Update to the latest version
 
-      - name: Set up JDK
-        uses: actions/setup-java@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4  # Update to the latest version
         with:
-          java-version: '11'
-          distribution: 'adoptopenjdk'
+          node-version: '20'
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build project
+        run: npm run build
